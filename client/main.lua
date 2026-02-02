@@ -201,6 +201,26 @@ RegisterNetEvent('hawes-weather:openMenu', function()
     TriggerServerEvent('hawes-weather:requestState')
 end)
 
+AddEventHandler('onResourceStart', function(resource)
+    if resource ~= GetCurrentResourceName() then
+        return
+    end
+
+    isMenuOpen = false
+    SetNuiFocus(false, false)
+    SendNUIMessage({ type = 'close' })
+end)
+
+AddEventHandler('onResourceStop', function(resource)
+    if resource ~= GetCurrentResourceName() then
+        return
+    end
+
+    isMenuOpen = false
+    SetNuiFocus(false, false)
+    SendNUIMessage({ type = 'close' })
+end)
+
 RegisterCommand('+hawesWeatherMenu', function()
     if not isMenuOpen then
         TriggerServerEvent('hawes-weather:requestOpenMenu')

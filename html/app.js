@@ -269,6 +269,10 @@ function applyState(state, logs) {
 
 window.addEventListener('message', (event) => {
   const data = event.data;
+  if (data.type === 'close') {
+    app.classList.add('hidden');
+    return;
+  }
   if (data.type === 'open') {
     app.classList.remove('hidden');
     return;
