@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Control</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">⚙️</span>
+        <span>Weather Control</span>
+      </div>
+      <nav class="menu">
+        <button class="menu-item active" data-section="weather">Weather Control</button>
+        <button class="menu-item" data-section="temperature">Temperature</button>
+        <button class="menu-item" data-section="voting">Voting</button>
+        <button class="menu-item" data-section="scheduler">Scheduler</button>
+        <button class="menu-item" data-section="freeze">Freeze Panel</button>
+        <button class="menu-item" data-section="logs">Logs</button>
+      </nav>
+      <div class="footer">
+        <p>Hawes Weather Control</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="content-header">
+        <h1 id="section-title">Weather Control</h1>
+        <button id="close">✕</button>
+      </header>
+
+      <section id="weather" class="section active">
+        <div class="weather-grid" id="weather-grid"></div>
+        <div class="panel">
+          <div class="panel-item">
+            <h3>Time Control</h3>
+            <div class="time-row">
+              <label>Hour
+                <input type="number" id="hour" min="0" max="23" />
+              </label>
+              <label>Minute
+                <input type="number" id="minute" min="0" max="59" />
+              </label>
+              <button id="set-time">Apply Time</button>
+            </div>
+          </div>
+          <div class="panel-item">
+            <h3>Quick Actions</h3>
+            <div class="quick-actions">
+              <button id="freeze-weather">Toggle Weather Freeze</button>
+              <button id="freeze-time">Toggle Time Freeze</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="temperature" class="section">
+        <div class="panel">
+          <div class="panel-item">
+            <h3>Body Temperature</h3>
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span>Current</span>
+                <strong id="temp-current">20°C</strong>
+              </div>
+              <div class="stat-card">
+                <span>Weather</span>
+                <strong id="temp-weather">CLEAR</strong>
+              </div>
+              <div class="stat-card">
+                <span>Altitude</span>
+                <strong id="temp-altitude">0m</strong>
+              </div>
+            </div>
+            <p class="muted">Temperature reacts to clothing, altitude, water, running, and nearby fires.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="voting" class="section">
+        <div class="panel">
+          <div class="panel-item">
+            <div class="panel-header">
+              <h3>Weather Voting</h3>
+              <button id="start-vote">Start Vote</button>
+            </div>
+            <div class="stat-grid" id="vote-stats"></div>
+            <p class="muted" id="vote-status">No active vote.</p>
+            <div class="weather-grid" id="vote-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scheduler" class="section">
+        <div class="panel">
+          <div class="panel-item">
+            <h3>Create Schedule</h3>
+            <div class="time-row">
+              <label>Hour
+                <input type="number" id="schedule-hour" min="0" max="23" />
+              </label>
+              <label>Minute
+                <input type="number" id="schedule-minute" min="0" max="59" />
+              </label>
+              <label>Weather
+                <select id="schedule-weather"></select>
+              </label>
+              <label>Temp
+                <input type="number" id="schedule-temp" />
+              </label>
+              <label>Rain
+                <input type="number" id="schedule-rain" min="0" max="100" />
+              </label>
+              <label>Fog
+                <input type="number" id="schedule-fog" min="0" max="100" />
+              </label>
+              <label>Wind
+                <input type="number" id="schedule-wind" min="0" max="100" />
+              </label>
+              <label>Recurring
+                <select id="schedule-recurring">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </label>
+              <button id="add-schedule">Add</button>
+            </div>
+          </div>
+          <div class="panel-item">
+            <h3>Upcoming Schedules</h3>
+            <div class="schedule-list" id="schedule-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="freeze" class="section">
+        <div class="panel">
+          <div class="panel-item">
+            <h3>Freeze Panel</h3>
+            <p>Toggle time or weather freezing for consistent sessions.</p>
+            <div class="quick-actions">
+              <button id="freeze-weather-alt">Toggle Weather Freeze</button>
+              <button id="freeze-time-alt">Toggle Time Freeze</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="logs" class="section">
+        <div class="logs-header">
+          <h2>System Logs</h2>
+        </div>
+        <div class="logs" id="logs"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

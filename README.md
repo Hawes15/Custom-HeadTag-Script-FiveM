@@ -1,39 +1,52 @@
-🧠 Custom  Hawes HeadTagID Script | Fully Configurable & Stylish 3D Text
-Bring your server to life with this Custom HeadTag Script, designed for maximum flexibility and a clean, modern look!
-Perfect for roleplay servers, staff systems, or community identification, this script gives every player a unique, stylish 3D headtag that stands out beautifully in-game.
+# Hawes Weather Control
 
-✨ Features
-🎨 Fully Configurable: Adjust colors, sizes, distances, and display conditions easily in the config file.
+High-quality weather control for FiveM with ACE permissions or Badger Discord API role checks. Includes automated cycling, scheduling, voting, and a realistic body temperature system.
 
-🧾 3D Text Rendering: Smooth, clean, and perfectly optimized 3D text that hovers above players’ heads.
+## Features
+- **Comprehensive weather control**: 12+ weather types, smooth transitions, weather freeze, and blacklist support.
+- **Time management**: custom time setting, time freeze, and optional auto-progression.
+- **Democratic weather voting**: forecast alerts, voting duration, live vote counts, and majority wins.
+- **Advanced scheduling**: schedule weather changes with optional temperature/rain/fog/wind values, recurring or one-time, persisted to disk.
+- **Realistic temperature system**: clothing, altitude, swimming penalties, fire warmth, and running warmup with smooth transitions.
+- **Exports/API**: programmatic get/set for weather, time, and temperature.
 
-🧍‍♂️ Custom Formats: Add roles, IDs, player names, or custom icons — your choice!
+## Requirements
+- **Badger Discord API** (optional if you only use ACE perms)
 
-⚙️ Optimized Performance: Lightweight and optimized for large servers with no FPS drops.
+## Installation
+1. Drop this resource into your server resources folder.
+2. Add `ensure hawes-weather-control` (or your folder name) to `server.cfg`.
+3. Configure permissions, weather probabilities, and temperature tuning in `config.lua`.
 
-💡 Dynamic Visibility: Show or hide tags based on range, job, or permissions.
+## Commands
+- `/weathermenu` — Opens the weather control menu for authorized users.
+- `/voteweather <WEATHER>` — Cast a vote during an active weather vote.
 
-🛠️ Plug & Play: Simple to install, easy to customize, and ready to use right away.
+## Permissions
+### ACE
+Add an ACE permission in your `server.cfg`:
+```
+add_ace group.admin weather.control allow
+```
 
+### Discord Roles
+Add the Discord role IDs to `Config.DiscordRoleIds` in `config.lua` and make sure your Badger Discord API resource is running.
 
+## Configuration
+Edit `config.lua` for:
+- Menu command, keybind, and permission setup.
+- Weather probabilities, blacklist, transition duration, and cycle intervals.
+- Time auto-progression and sync interval.
+- Voting duration and minimum votes.
+- Schedule persistence file.
+- Temperature tuning and clothing warmth values.
 
-🧰 Configuration Highlights
-Easily edit font styles, distances, scales, colors, and outlines
+## Exports
+### Server
+- `exports['hawes-weather-control']:GetWeatherState()`
+- `exports['hawes-weather-control']:SetWeather(weatherId)`
+- `exports['hawes-weather-control']:SetTime(hour, minute)`
+- `exports['hawes-weather-control']:StartVote(reason)`
 
-Supports multiple tag formats (admin, staff, police, etc.)
-
-Optional permission-based visibility
-
-Works seamlessly with ESX, QBCore, or standalone servers
-
- 
-
-⚙️ Requirements
-✅ Badger Discord API – Required for role synchronization and permission-based headtags.
-
-
-
-📦 Installation:
-Drag & drop → Configure → Enjoy your new 3D HeadTags!
-
-TEBEX HERE: https://hawes-headtagids-script.tebex.io
+### Client
+- `exports['hawes-weather-control']:GetBodyTemperature()`
